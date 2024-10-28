@@ -1,11 +1,13 @@
 <?php
 require_once('Route.php');
+require_once('model/pytanie.php');
 
 $db = new mysqli('localhost', 'root', '', 'majnkraftroulette');
 $db->set_charset('utf8');
 
 use Steampixel\Route;
 use majnkraftroulette\rejestracja;
+use majnkraftroulette\pytanie;
 
 Route::add('/', function(){
 echo 'Nie zwróciłeś żadnego parametru API';
@@ -40,10 +42,9 @@ Route::add('/ruletka/([0-9]*)', function($ID) use($db) {
 });
 
 Route::add('/pytanie/([0-9]*)', function($ID) use($db) {
-    $result = $db->query("SELECT * FROM pytania WHERE ID = $ID");
-    $pytania = $result->fetch_assoc();
+   $pytania = pytanie::getpytanie($ID, $db);
     header('Content-Type: application/json');
-    return json_encode($pytania);
+    return json_encode($pytania->getArray());
 });
 
  Route::run('/majnkraftroulette');

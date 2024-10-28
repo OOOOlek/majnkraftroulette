@@ -3,15 +3,14 @@ namespace majnkraftroulette;
 use mysqli;
 
 class pytanie {
-    private $ID;
-    private $Pytanie;
-    private $Odpowiedz;
-   
+    private $ID; 
+    private $Pytanie; 
+    private $Odpowiedz; 
 
     public function __construct($ID, $Pytanie, $Odpowiedz) {
-    $this->ID = $ID;
-    $this->Pytanie = $Pytanie;
-    $this->Odpowiedz = $Odpowiedz
+        $this->ID = $ID;
+        $this->Pytanie = $Pytanie;
+        $this->Odpowiedz = $Odpowiedz;
     }
 
     public static function getpytanie($ID, $db) {
@@ -21,15 +20,15 @@ class pytanie {
         $query->execute();
         $result = $query->get_result();
         $pytanieData = $result->fetch_assoc();
-        return new Pytanie($pytanieData['ID'], $pytanieData['Pytanie'], $pytanieData['Odpowiedz']);
+        return new pytanie($pytanieData['ID'], $pytanieData['Pytanie'], $pytanieData['Odpowiedz']);
     }
+
     public function getArray(): array {
         return [
-            'ID' => $this->id,
-            'Pytanie' => $this->pytanie,
-            'Odpowiedz' => $this->odpowiedz
+            'ID' => $this->ID, 
+            'Pytanie' => $this->Pytanie, 
+            'Odpowiedz' => $this->Odpowiedz 
         ];
-
     }
 }
 ?>
