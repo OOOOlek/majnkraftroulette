@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Paź 21, 2024 at 01:14 PM
+-- Generation Time: Paź 28, 2024 at 12:57 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -30,14 +30,14 @@ SET time_zone = "+00:00";
 CREATE TABLE `pytania` (
   `ID` int(11) NOT NULL,
   `Pytanie` varchar(255) NOT NULL,
-  `Odpowiedź` enum('tak','nie') NOT NULL
+  `Odpowiedz` enum('tak','nie') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `pytania`
 --
 
-INSERT INTO `pytania` (`ID`, `Pytanie`, `Odpowiedź`) VALUES
+INSERT INTO `pytania` (`ID`, `Pytanie`, `Odpowiedz`) VALUES
 (1, 'Czy lubisz programować?', 'tak'),
 (2, 'Czy znasz język angielski?', 'tak'),
 (3, 'Czy masz doświadczenie w pracy z bazami danych?', 'nie'),
