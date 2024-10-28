@@ -39,6 +39,13 @@ Route::add('/ruletka/([0-9]*)', function($ID) use($db) {
     return json_encode($ruletka);
 });
 
+Route::add('/pytanie/([0-9]*)', function($ID) use($db) {
+    $result = $db->query("SELECT * FROM pytania WHERE ID = $ID");
+    $pytania = $result->fetch_assoc();
+    header('Content-Type: application/json');
+    return json_encode($pytania);
+});
+
  Route::run('/majnkraftroulette');
 
  $db->close()
