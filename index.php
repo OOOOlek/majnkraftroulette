@@ -41,11 +41,17 @@ Route::add('/ruletka/([0-9]*)', function($ID) use($db) {
     return json_encode($ruletka);
 });
 
-Route::add('/pytanie/([0-9]*)', function($ID) use($db) {
-   $pytania = pytanie::getpytanie($ID, $db);
+Route::add('/pytanie', function() use($db) {
+    $randomPytanie = pytanie::getRandomQuestion($db);
     header('Content-Type: application/json');
-    return json_encode($pytania->getArray());
+
+    if ($randomPytanie) {
+        return json_encode($randomPytanie->getArray());
+    } else {
+        return json_encode(['error' => 'Brak dostępnych pytań.']);
+    }
 });
+
 
  Route::run('/majnkraftroulette');
 
